@@ -1,0 +1,157 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/EndToEndTest/EndToEndTest.csproj": {}
+  },
+  "projects": {
+    "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/EndToEndTest/EndToEndTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/EndToEndTest/EndToEndTest.csproj",
+        "projectName": "EndToEndTest",
+        "projectPath": "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/EndToEndTest/EndToEndTest.csproj",
+        "packagesPath": "/Users/rminafa/.nuget/packages/",
+        "outputPath": "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/EndToEndTest/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/rminafa/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/GitHub.Server/GitHub.Server.csproj": {
+                "projectPath": "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/GitHub.Server/GitHub.Server.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/GitHub.Server/GitHub.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/GitHub.Server/GitHub.Server.csproj",
+        "projectName": "GitHub.Server",
+        "projectPath": "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/GitHub.Server/GitHub.Server.csproj",
+        "packagesPath": "/Users/rminafa/.nuget/packages/",
+        "outputPath": "/Users/rminafa/Projects/server-side-cache-system/GitHub.Server/GitHub.Server/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/rminafa/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "System.Runtime.Caching": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
