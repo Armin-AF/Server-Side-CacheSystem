@@ -37,7 +37,7 @@ https://github.com/Armin-AF/server-side-cache-system.git
 * To build the library from source, you will need to have the .NET Core SDK installed.
 
 ```csharp
-git clone https://github.com/yourusername/github-api-client.git
+git clone https://github.com/Armin-AF/Server-Side-CacheSystem.git
 cd github-api-client
 dotnet build
 ```
