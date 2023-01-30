@@ -35,7 +35,7 @@ public class GitHubController : ControllerBase
         return Ok(user);
     }
 
-    private async Task<GitHubUser> GetGitHubUserFromApiAsync(string username)
+    async Task<GitHubUser> GetGitHubUserFromApiAsync(string username)
     {
         using var httpClient = new HttpClient();
         httpClient.DefaultRequestHeaders.Add("User-Agent", "MyGitHubClient");
