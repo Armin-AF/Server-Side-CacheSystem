@@ -10,7 +10,7 @@ public class GetUserUnitTest
             var controller = new GitHubController(memoryCache);
             const string username = "testuser";
             var expected = new GitHubUser{
-                AvatarUrl = null, HtmlUrl = null, Id = 19480, Login = "testuser",
+                AvatarUrl = null!, HtmlUrl = null!, Id = 19480, Login = "testuser",
                 Url = "https://api.github.com/users/testuser"
             };
 
@@ -32,7 +32,7 @@ public class GetUserUnitTest
             var controller = new GitHubController(memoryCache);
             const string username = "testuser";
             var expected = new GitHubUser{
-                AvatarUrl = null, HtmlUrl = null, Id = 19480, Login = "testuser",
+                AvatarUrl = null!, HtmlUrl = null!, Id = 19480, Login = "testuser",
                 Url = "https://api.github.com/users/testuser"
             };
 
@@ -101,7 +101,7 @@ public class GetUserUnitTest
 
         class ApiClientMock
         {
-            GitHubUser User { get; set; }
+            GitHubUser User { get; set; } = null!;
 
             public Task<HttpResponseMessage> GetAsync(string requestUri)
             {
