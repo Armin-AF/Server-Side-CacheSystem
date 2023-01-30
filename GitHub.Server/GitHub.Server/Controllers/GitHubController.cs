@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using GitHub.Server.Models;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
-using MemoryCache = System.Runtime.Caching.MemoryCache;
 
 
 namespace GitHub.Server.Controllers;
@@ -21,16 +20,14 @@ public class GitHubController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetUser(string username)
     {
-        if (!_memoryCache.TryGetValue(username, out GitHubUser user))
+        if (_memoryCache.TryGetValue(username, out GitHubUser user)) return Ok(user);
+        // Call the GitHub API to retrieve the data
+        // If the data is not in the cache, retrieve it from the API and add it to the cache
+        user = await GetGitHubUserFromApiAsync(username);
+        _memoryCache.Set(username, user, new MemoryCacheEntryOptions
         {
-            // Call the GitHub API to retrieve the data
-            // If the data is not in the cache, retrieve it from the API and add it to the cache
-            user = await GetGitHubUserFromApiAsync(username);
-            _memoryCache.Set(username, user, new MemoryCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
-            });
-        }
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+        });
 
         return Ok(user);
     }
@@ -45,7 +42,7 @@ public class GitHubController : ControllerBase
     
         using var reader = new JsonTextReader(new StringReader(json));
         var serializer = new JsonSerializer();
-        return serializer.Deserialize<GitHubUser>(reader);
+        return serializer.Deserialize<GitHubUser>(reader)!;
     }
 
     
