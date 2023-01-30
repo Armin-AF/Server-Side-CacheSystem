@@ -1,10 +1,3 @@
-using GitHub.Server.Controllers;
-using GitHub.Server.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Primitives;
-using Newtonsoft.Json;
-
 namespace GitHub.Server.Test;
 
 public class UnitTest1
@@ -106,9 +99,9 @@ public class UnitTest1
         }
 
 
-        private class ApiClientMock
+        class ApiClientMock
         {
-            public GitHubUser User { get; set; }
+            GitHubUser User { get; set; }
 
             public Task<HttpResponseMessage> GetAsync(string requestUri)
             {

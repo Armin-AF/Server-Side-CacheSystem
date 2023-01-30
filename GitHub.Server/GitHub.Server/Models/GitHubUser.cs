@@ -8,6 +8,16 @@ public class GitHubUser
     public string Url { get; set; }
     public string HtmlUrl { get; set; }
     
+    public int public_repos { get; set; }
+    
+    public string bio { get; set; }
+    
+    public string name { get; set; }
+    
+    public string location { get; set; }
+    
+    public DateTime created_at { get; set; }
+
     public override bool Equals(object obj)
     {
         var other = obj as GitHubUser;
