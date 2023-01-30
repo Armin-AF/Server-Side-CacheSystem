@@ -7,6 +7,7 @@ using MemoryCache = System.Runtime.Caching.MemoryCache;
 
 namespace GitHub.Server.Controllers;
 
+[ApiController]
 [Route("api/github/{username}")]
 public class GitHubController : ControllerBase
 {
