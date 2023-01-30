@@ -1,6 +1,6 @@
 namespace GitHub.Server.Test;
 
-public class UnitTest1
+public class GetUserUnitTest
 {
     [Fact]
         public async Task GetUser_ReturnsUserFromCache_WhenUserIsInCache()
