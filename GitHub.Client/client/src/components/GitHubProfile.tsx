@@ -46,7 +46,7 @@ const GitHubProfile: React.FC<Props> = ({ username }) => {
     }
 
     return (
-        <div>
+        <div className="github-profile">
             <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
             <p>Username: {user.Login}</p>
             <p>Name: {user.name}</p>
