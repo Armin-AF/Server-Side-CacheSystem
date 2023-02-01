@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './GitHubProfile.css';
 
 interface GitHubUser {
     Login: string;
@@ -34,7 +35,7 @@ const GitHubProfile: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        fetchData(username).then(r => console.log(r));
+        fetchData(username);
     };
 
     return (
@@ -48,24 +49,25 @@ const GitHubProfile: React.FC = () => {
                 />
                 <button type="submit">Search</button>
             </form>
-            {loading && <div>Loading...</div>}
-            {error && <div>{error}</div>}
+            {loading && <div className="loading">Loading...</div>}
+            {error && <div className="error">{error}</div>}
             {user && (
-                <>
+                <div className="user-info">
                     <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
-                    <p>Username: {user.Login}</p>
-                    <p>Name: {user.name}</p>
-                    <p>Bio: {user.bio}</p>
-                    <p>Location: {user.location}</p>
-                    <p>Number of public repositories: {user.public_repos}</p>
-                    <p>Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
-                    <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
-                </>
+                    <p className="username">Username: {user.Login}</p>
+                    <p className="name">Name: {user.name}</p>
+                    <p className="bio">Bio: {user.bio}</p>
+                    <p className="location">Location: {user.location}</p>
+                    <p className="public-repos">Number of public repositories: {user.public_repos}</p>
+                    <p className="profile-url">Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
+                    <p className="cache">Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
+                </div>
             )}
         </div>
     );
 };
 
 export default GitHubProfile;
+
 
 
