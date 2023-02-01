@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-* [.NET Core 3.1](https://dotnet.microsoft.com/download) - The .NET Core runtime
+* [.NET Core 6.0](https://dotnet.microsoft.com/download) - The .NET Core runtime
 
 ## Getting Started
 
