@@ -36,7 +36,7 @@ public class GitHubEndToEndTest
         var result = await _controller.GetUser(username);
 
         // Assert
-        var actualUser = (GitHubUser)((OkObjectResult)result).Value;
+        var actualUser = (GitHubUser)((OkObjectResult)result).Value!;
         Assert.AreEqual(expectedUser, actualUser);
     }
 
@@ -49,7 +49,7 @@ public class GitHubEndToEndTest
 
         // Act
         var result = await controller.GetUser(username);
-        var user = (GitHubUser)((ObjectResult)result).Value;
+        var user = (GitHubUser)((ObjectResult)result).Value!;
 
         // Assert
         Assert.IsNotNull(user);
