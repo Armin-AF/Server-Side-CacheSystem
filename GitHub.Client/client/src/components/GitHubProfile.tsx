@@ -47,6 +47,8 @@ const GitHubProfile: React.FC = () => {
 
     return (
         <div className="github-profile">
+            <img src={"https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"} alt={"GitHub logo"} />
+            <h1>GitHub Profile</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
