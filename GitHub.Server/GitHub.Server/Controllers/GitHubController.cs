@@ -31,7 +31,7 @@ public class GitHubController : ControllerBase
 
         return Ok(user);
     }
-
+    
     async Task<GitHubUser> GetGitHubUserFromApiAsync(string username)
     {
         using var httpClient = new HttpClient();
@@ -44,6 +44,4 @@ public class GitHubController : ControllerBase
         var serializer = new JsonSerializer();
         return serializer.Deserialize<GitHubUser>(reader)!;
     }
-
-    
 }

@@ -1,15 +1,11 @@
-using GitHub.Server.Controllers;
-using GitHub.Server.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace EndToEndTest;
 
 [TestClass]
 public class GitHubEndToEndTest
 {
-    private readonly GitHubController _controller;
-    private readonly IMemoryCache _memoryCache;
+    readonly GitHubController _controller;
+    readonly IMemoryCache _memoryCache;
 
 
     public GitHubEndToEndTest()
