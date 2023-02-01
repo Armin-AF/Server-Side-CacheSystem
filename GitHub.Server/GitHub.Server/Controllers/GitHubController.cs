@@ -24,11 +24,15 @@ public class GitHubController : ControllerBase
         {
             var cached = new GitHubUser
             {
-                AvatarUrl = user.AvatarUrl,
-                HtmlUrl = user.HtmlUrl,
-                Id = user.Id,
                 Login = user.Login,
+                Id = user.Id,
+                AvatarUrl = user.AvatarUrl,
                 Url = user.Url,
+                HtmlUrl = user.HtmlUrl,
+                public_repos = user.public_repos,
+                bio = user.bio,
+                name = user.name,
+                location = user.location,
                 IsFromCache = true
             };
             return Ok(cached);
