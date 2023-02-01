@@ -54,7 +54,6 @@ const GitHubProfile: React.FC = () => {
             {user && (
                 <div className="user-info">
                     <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
-                    <p className="username">Username: {user.Login}</p>
                     <p className="name">Name: {user.name}</p>
                     <p className="bio">Bio: {user.bio}</p>
                     <p className="location">Location: {user.location}</p>
