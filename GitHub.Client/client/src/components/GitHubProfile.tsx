@@ -38,6 +38,13 @@ const GitHubProfile: React.FC = () => {
         fetchData(username);
     };
 
+    const handleClear = () => {
+        setUsername('');
+        setUser(null);
+        setError(null);
+        setLoading(false);
+    };
+
     return (
         <div className="github-profile">
             <form onSubmit={handleSubmit}>
@@ -49,24 +56,28 @@ const GitHubProfile: React.FC = () => {
                 />
                 <button type="submit">Search</button>
             </form>
-            {loading && <div className="loading">Loading...</div>}
-            {error && <div className="error">{error}</div>}
+
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
             {user && (
-                <div className="user-info">
+                <>
                     <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
-                    <p className="name">Name: {user.name}</p>
-                    <p className="bio">Bio: {user.bio}</p>
-                    <p className="location">Location: {user.location}</p>
-                    <p className="public-repos">Number of public repositories: {user.public_repos}</p>
-                    <p className="profile-url">Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
-                    <p className="cache">Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
-                </div>
+                    <p>Username: {user.Login}</p>
+                    <p>Name: {user.name}</p>
+                    <p>Bio: {user.bio}</p>
+                    <p>Location: {user.location}</p>
+                    <p>Number of public repositories: {user.public_repos}</p>
+                    <p>Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
+                    <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
+                </>
             )}
+            <button className={"clear-button"} type="button" onClick={handleClear}>Clear</button>
         </div>
     );
 };
 
 export default GitHubProfile;
+
 
 
 
