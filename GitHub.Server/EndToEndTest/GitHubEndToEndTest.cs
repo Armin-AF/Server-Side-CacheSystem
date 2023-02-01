@@ -23,8 +23,8 @@ public class GitHubEndToEndTest
         {
             Login = username,
             Id = 12345,
-            AvatarUrl = "https://avatars.com/user.png",
-            HtmlUrl = "https://github.com/user",
+            avatar_url = "https://avatars.com/user.png",
+            html_url = "https://github.com/user",
             Url = "https://api.github.com/users/user"
         };
         _memoryCache.Set(username, expectedUser, new MemoryCacheEntryOptions

@@ -4,9 +4,9 @@ import axios from 'axios';
 interface GitHubUser {
     Login: string;
     Id: number;
-    AvatarUrl: string;
+    avatar_url: string;
     Url: string;
-    HtmlUrl: string;
+    html_url: string;
     public_repos: number;
     bio: string;
     name: string;
@@ -47,13 +47,13 @@ const GitHubProfile: React.FC<Props> = ({ username }) => {
 
     return (
         <div>
-            <img src={user.AvatarUrl} alt={`${user.Login}'s avatar`} />
+            <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
             <p>Username: {user.Login}</p>
             <p>Name: {user.name}</p>
             <p>Bio: {user.bio}</p>
             <p>Location: {user.location}</p>
             <p>Number of public repositories: {user.public_repos}</p>
-            <p>Profile URL: <a href={user.HtmlUrl}>{user.HtmlUrl}</a></p>
+            <p>Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
             <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
         </div>
     );

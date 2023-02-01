@@ -4,9 +4,9 @@ public class GitHubUser
 {
     public string Login { get; set; }
     public int Id { get; set; }
-    public string AvatarUrl { get; set; }
+    public string avatar_url { get; set; }
     public string Url { get; set; }
-    public string HtmlUrl { get; set; }
+    public string html_url { get; set; }
     
     public int public_repos { get; set; }
     

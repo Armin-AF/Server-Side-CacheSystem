@@ -26,9 +26,9 @@ public class GitHubController : ControllerBase
             {
                 Login = user.Login,
                 Id = user.Id,
-                AvatarUrl = user.AvatarUrl,
+                avatar_url = user.avatar_url,
                 Url = user.Url,
-                HtmlUrl = user.HtmlUrl,
+                html_url = user.html_url,
                 public_repos = user.public_repos,
                 bio = user.bio,
                 name = user.name,
