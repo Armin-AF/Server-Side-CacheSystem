@@ -24,7 +24,7 @@ public class GitHubController : ControllerBase
         {
             var cached = new GitHubUser
             {
-                Login = user.Login,
+                login = user.login,
                 Id = user.Id,
                 avatar_url = user.avatar_url,
                 Url = user.Url,

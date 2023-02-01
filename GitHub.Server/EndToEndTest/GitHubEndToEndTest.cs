@@ -21,7 +21,7 @@ public class GitHubEndToEndTest
         var username = "testuser";
         var expectedUser = new GitHubUser
         {
-            Login = username,
+            login = username,
             Id = 12345,
             avatar_url = "https://avatars.com/user.png",
             html_url = "https://github.com/user",
@@ -53,7 +53,7 @@ public class GitHubEndToEndTest
 
         // Assert
         Assert.IsNotNull(user);
-        Assert.AreEqual(username, user.Login);
+        Assert.AreEqual(username, user.login);
     }
 
     [TestMethod]

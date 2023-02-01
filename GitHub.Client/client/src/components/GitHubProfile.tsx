@@ -3,7 +3,7 @@ import axios from 'axios';
 import './GitHubProfile.css';
 
 interface GitHubUser {
-    Login: string;
+    login: string;
     Id: number;
     avatar_url: string;
     Url: string;
@@ -67,8 +67,8 @@ const GitHubProfile: React.FC = () => {
             {error && <div>{error}</div>}
             {user && (
                 <>
-                    <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
-                    <p>Username: {user.Login}</p>
+                    <img src={user.avatar_url} alt={`${user.login}'s avatar`} />
+                    <p>Username: {user.login}</p>
                     <p>Name: {user.name}</p>
                     <p>Bio: {user.bio}</p>
                     <p>Location: {user.location}</p>

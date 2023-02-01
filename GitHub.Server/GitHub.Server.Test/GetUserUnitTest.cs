@@ -10,7 +10,7 @@ public class GetUserUnitTest
             var controller = new GitHubController(memoryCache);
             const string username = "testuser";
             var expected = new GitHubUser{
-                avatar_url = null!, html_url = null!, Id = 19480, Login = "testuser",
+                avatar_url = null!, html_url = null!, Id = 19480, login = "testuser",
                 Url = "https://api.github.com/users/testuser"
             };
 
@@ -32,7 +32,7 @@ public class GetUserUnitTest
             var controller = new GitHubController(memoryCache);
             const string username = "testuser";
             var expected = new GitHubUser{
-                avatar_url = null!, html_url = null!, Id = 19480, Login = "testuser",
+                avatar_url = null!, html_url = null!, Id = 19480, login = "testuser",
                 Url = "https://api.github.com/users/testuser"
             };
 
