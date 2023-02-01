@@ -20,10 +20,15 @@ public class GitHubController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetUser(string username)
     {
-        if (_memoryCache.TryGetValue(username, out GitHubUser user)) return Ok(user);
+        if (_memoryCache.TryGetValue(username, out GitHubUser user))
+        {
+            user.IsFromCache = true;
+            return Ok(user);
+        }
         // Call the GitHub API to retrieve the data
         // If the data is not in the cache, retrieve it from the API and add it to the cache
         user = await GetGitHubUserFromApiAsync(username);
+        user.IsFromCache = false;
         _memoryCache.Set(username, user, new MemoryCacheEntryOptions
         {
             AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
@@ -31,6 +36,12 @@ public class GitHubController : ControllerBase
 
         return Ok(user);
     }
+    
+    [HttpGet("cached")]
+    public Task<IActionResult> GetUserCached(string username){
+        return _memoryCache.TryGetValue(username, out GitHubUser user) ? Task.FromResult<IActionResult>(Ok(user)) : Task.FromResult<IActionResult>(NotFound());
+    }
+    
     
     async Task<GitHubUser> GetGitHubUserFromApiAsync(string username)
     {

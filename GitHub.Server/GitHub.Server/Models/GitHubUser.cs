@@ -17,6 +17,9 @@ public class GitHubUser
     public string location { get; set; }
     
     public DateTime created_at { get; set; }
+    
+    
+    public bool IsFromCache { get; set; }
 
     public override bool Equals(object obj)
     {
