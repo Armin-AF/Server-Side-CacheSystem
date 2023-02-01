@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 interface GitHubUser {
@@ -15,50 +15,57 @@ interface GitHubUser {
     isFromCache: boolean;
 }
 
-interface Props {
-    username: string;
-}
-
-const GitHubProfile: React.FC<Props> = ({ username }) => {
+const GitHubProfile: React.FC = () => {
+    const [username, setUsername] = useState('');
     const [user, setUser] = useState<GitHubUser | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // If the user data is not in the cache, make a request to the GitHub API
-                const response = await axios.get(`https://localhost:7215/api/github/${username}`);
-                console.log(response.data);
-                setUser(response.data);
-            } catch (error) {
-                setError((error as any).message);
-            }
-        };
-        fetchData();
-    }, [username]);
+    const fetchData = async (username: string) => {
+        setLoading(true);
+        try {
+            const response = await axios.get(`https://localhost:7215/api/github/${username}`);
+            setUser(response.data);
+        } catch (error) {
+            setError((error as any).message);
+        }
+        setLoading(false);
+    };
 
-    if (error) {
-        return <div>{error}</div>;
-    }
-
-    if (!user) {
-        return <div>Loading...</div>;
-    }
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        fetchData(username).then(r => console.log(r));
+    };
 
     return (
         <div className="github-profile">
-            <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
-            <p>Username: {user.Login}</p>
-            <p>Name: {user.name}</p>
-            <p>Bio: {user.bio}</p>
-            <p>Location: {user.location}</p>
-            <p>Number of public repositories: {user.public_repos}</p>
-            <p>Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
-            <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                    placeholder="Enter GitHub username"
+                />
+                <button type="submit">Search</button>
+            </form>
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
+            {user && (
+                <>
+                    <img src={user.avatar_url} alt={`${user.Login}'s avatar`} />
+                    <p>Username: {user.Login}</p>
+                    <p>Name: {user.name}</p>
+                    <p>Bio: {user.bio}</p>
+                    <p>Location: {user.location}</p>
+                    <p>Number of public repositories: {user.public_repos}</p>
+                    <p>Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
+                    <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
+                </>
+            )}
         </div>
     );
 };
 
-
 export default GitHubProfile;
+
 

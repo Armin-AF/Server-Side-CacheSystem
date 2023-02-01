@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     padding: 40px;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
 }
 
 .github-profile img {
