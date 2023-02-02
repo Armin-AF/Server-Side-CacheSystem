@@ -1,4 +1,6 @@
 
+using Microsoft.Extensions.Logging;
+
 namespace EndToEndTest;
 
 [TestClass]
@@ -6,12 +8,13 @@ public class GitHubEndToEndTest
 {
     readonly GitHubController _controller;
     readonly IMemoryCache _memoryCache;
+    readonly ILogger<GitHubController> _logger;
 
 
     public GitHubEndToEndTest()
     {
         _memoryCache = new MemoryCache(new MemoryCacheOptions());
-        _controller = new GitHubController(_memoryCache);
+        _controller = new GitHubController(_memoryCache, _logger);
     }
 
     [TestMethod]
@@ -44,7 +47,7 @@ public class GitHubEndToEndTest
     public async Task GetUser_ReturnsUserFromApi_WhenUsernameDoesNotExistInCache()
     {
         // Arrange
-        var controller = new GitHubController(new MemoryCache(new MemoryCacheOptions()));
+        var controller = new GitHubController(new MemoryCache(new MemoryCacheOptions()), _logger);
         var username = "testuser";
 
         // Act

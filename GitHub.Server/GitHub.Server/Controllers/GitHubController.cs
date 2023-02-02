@@ -11,10 +11,12 @@ namespace GitHub.Server.Controllers;
 public class GitHubController : ControllerBase
 {
     private readonly IMemoryCache _memoryCache;
+    private readonly ILogger<GitHubController> _logger;
 
-    public GitHubController(IMemoryCache memoryCache)
+    public GitHubController(IMemoryCache memoryCache, ILogger<GitHubController> logger)
     {
         _memoryCache = memoryCache;
+        _logger = logger;
     }
     
     [HttpGet]
@@ -70,8 +72,11 @@ public class GitHubController : ControllerBase
 
         if (cacheKeys == null)
         {
+            _logger.LogInformation("Cache keys is null");
             return NotFound();
         }
+
+        _logger.LogInformation("Number of cache keys: {CacheKeysCount}", cacheKeys.Count);
 
         var cachedUsers = new List<GitHubUser>();
         foreach (var cacheKey in cacheKeys.Keys)
@@ -82,11 +87,15 @@ public class GitHubController : ControllerBase
             }
         }
 
+        _logger.LogInformation("Number of cached users: {CachedUsersCount}", cachedUsers.Count);
+
         return Ok(cachedUsers);
     }
 
-    
-    
+
+
+
+
     async Task<GitHubUser> GetGitHubUserFromApiAsync(string username)
     {
         using var httpClient = new HttpClient();

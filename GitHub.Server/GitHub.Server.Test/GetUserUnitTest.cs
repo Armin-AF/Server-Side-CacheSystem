@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+
 namespace GitHub.Server.Test;
 
 public class GetUserUnitTest
@@ -7,7 +9,7 @@ public class GetUserUnitTest
         {
             // Arrange
             var memoryCache = new TestMemoryCache();
-            var controller = new GitHubController(memoryCache);
+            var controller = new GitHubController(memoryCache, null!);
             const string username = "testuser";
             var expected = new GitHubUser{
                 avatar_url = null!, html_url = null!, Id = 19480, login = "testuser",
@@ -29,7 +31,7 @@ public class GetUserUnitTest
         {
             // Arrange
             var memoryCache = new TestMemoryCache();
-            var controller = new GitHubController(memoryCache);
+            var controller = new GitHubController(memoryCache, null!);
             const string username = "testuser";
             var expected = new GitHubUser{
                 avatar_url = null!, html_url = null!, Id = 19480, login = "testuser",
@@ -65,7 +67,7 @@ public class GetUserUnitTest
 
             public ICacheEntry CreateEntry(object key)
             {
-                var entry = new TestCacheEntry(key, this);
+                var entry = new TestCacheEntry(key, this, null!);
                 _cache[key] = entry.Value;
                 return entry;
             }
@@ -73,12 +75,14 @@ public class GetUserUnitTest
             class TestCacheEntry : ICacheEntry
             {
                 readonly TestMemoryCache _cache;
+                readonly ILogger<GitHubController> _logger;
                 readonly object _key;
 
-                public TestCacheEntry(object key, TestMemoryCache cache)
+                public TestCacheEntry(object key, TestMemoryCache cache, ILogger<GitHubController> logger)
                 {
                     _key = key;
                     _cache = cache;
+                    _logger = logger;
                 }
 
                 public object Key => _key;
