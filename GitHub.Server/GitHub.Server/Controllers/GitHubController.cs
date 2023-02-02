@@ -59,6 +59,31 @@ public class GitHubController : ControllerBase
         }
         return NotFound();
     }
+    
+    [HttpGet]
+    [Route("/api/github/all")]
+    public IActionResult GetAllCachedUsers()
+    {
+        var cacheKeys = _memoryCache.GetType()
+            .GetField("_entries", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
+            .GetValue(_memoryCache) as System.Collections.Concurrent.ConcurrentDictionary<object, object>;
+
+        if (cacheKeys == null)
+        {
+            return NotFound();
+        }
+
+        var cachedUsers = new List<GitHubUser>();
+        foreach (var cacheKey in cacheKeys.Keys)
+        {
+            if (_memoryCache.TryGetValue(cacheKey, out GitHubUser user))
+            {
+                cachedUsers.Add(user);
+            }
+        }
+
+        return Ok(cachedUsers);
+    }
 
     
     
