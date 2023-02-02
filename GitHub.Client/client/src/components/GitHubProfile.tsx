@@ -85,9 +85,12 @@ const GitHubProfile: React.FC = () => {
                     <p>Location: {user.location}</p>
                     <p>Number of public repositories: {user.public_repos}</p>
                     <p>Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
-                    <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
-                    <p>Time taken: {timeTaken}ms</p>
-                    <p>Items in cache: {itemsCount}</p>
+                    <div>
+                        <h3>Cache Info</h3>
+                        <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
+                        <p>Time taken: {timeTaken}ms</p>
+                        <p>Items in cache: {itemsCount}</p>
+                    </div>
                 </>
             )}
             <button className={"clear-button"} type="button" onClick={handleClear}>Clear</button>
