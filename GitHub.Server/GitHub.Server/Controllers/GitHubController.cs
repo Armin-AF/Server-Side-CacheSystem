@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using GitHub.Server.Models;
 using Microsoft.Extensions.Caching.Memory;
@@ -64,32 +66,19 @@ public class GitHubController : ControllerBase
     
     [HttpGet]
     [Route("/api/github/all")]
-    public IActionResult GetAllCachedUsers()
+    public IActionResult GetAllUsers()
     {
-        var cacheKeys = _memoryCache.GetType()
-            .GetField("_entries", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
-            .GetValue(_memoryCache) as System.Collections.Concurrent.ConcurrentDictionary<object, object>;
-
-        if (cacheKeys == null)
-        {
-            _logger.LogInformation("Cache keys is null");
-            return NotFound();
-        }
-
-        _logger.LogInformation("Number of cache keys: {CacheKeysCount}", cacheKeys.Count);
-
-        var cachedUsers = new List<GitHubUser>();
-        foreach (var cacheKey in cacheKeys.Keys)
-        {
-            if (_memoryCache.TryGetValue(cacheKey, out GitHubUser user))
+        var field = typeof(MemoryCache).GetProperty("EntriesCollection", BindingFlags.NonPublic | BindingFlags.Instance);
+        var collection = field.GetValue(_memoryCache) as ICollection;
+        var items = new List<string>();
+        if (collection != null)
+            foreach (var item in collection)
             {
-                cachedUsers.Add(user);
+                var methodInfo = item.GetType().GetProperty("Key");
+                var val = methodInfo.GetValue(item);
+                items.Add(val.ToString());
             }
-        }
-
-        _logger.LogInformation("Number of cached users: {CachedUsersCount}", cachedUsers.Count);
-
-        return Ok(cachedUsers);
+        return items.Count > 0 ? Ok(items) : NotFound();
     }
 
 
