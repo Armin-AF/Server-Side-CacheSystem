@@ -12,8 +12,8 @@ namespace GitHub.Server.Controllers;
 [Route("api/github/{username}")]
 public class GitHubController : ControllerBase
 {
-    private readonly IMemoryCache _memoryCache;
-    private readonly ILogger<GitHubController> _logger;
+    readonly IMemoryCache _memoryCache;
+    readonly ILogger<GitHubController> _logger;
 
     public GitHubController(IMemoryCache memoryCache, ILogger<GitHubController> logger)
     {
@@ -80,11 +80,7 @@ public class GitHubController : ControllerBase
             }
         return items.Count > 0 ? Ok(items) : NotFound();
     }
-
-
-
-
-
+    
     async Task<GitHubUser> GetGitHubUserFromApiAsync(string username)
     {
         using var httpClient = new HttpClient();
