@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './GitHubProfile.css';
 
@@ -22,6 +22,7 @@ const GitHubProfile: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [timeTaken, setTimeTaken] = useState<number | null>(null);
+    const [itemsCount, setItemsCount] = useState(0);
 
     const fetchData = async (username: string) => {
         setLoading(true);
@@ -48,6 +49,16 @@ const GitHubProfile: React.FC = () => {
         setError(null);
         setLoading(false);
     };
+
+    useEffect(() => {
+        axios.get('https://localhost:7215/api/github/all')
+            .then(response => {
+                setItemsCount(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
     return (
         <div className="github-profile">
@@ -76,6 +87,7 @@ const GitHubProfile: React.FC = () => {
                     <p>Profile URL: <a href={user.html_url}>{user.html_url}</a></p>
                     <p>Is from cache: {user.isFromCache ? 'Yes' : 'No'}</p>
                     <p>Time taken: {timeTaken}ms</p>
+                    <p>Items in cache: {itemsCount}</p>
                 </>
             )}
             <button className={"clear-button"} type="button" onClick={handleClear}>Clear</button>

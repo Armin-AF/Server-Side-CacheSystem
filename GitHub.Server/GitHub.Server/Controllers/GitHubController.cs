@@ -78,7 +78,7 @@ public class GitHubController : ControllerBase
                 var val = methodInfo.GetValue(item);
                 items.Add(val.ToString());
             }
-        return items.Count > 0 ? Ok(items) : NotFound();
+        return items.Count > 0 ? Ok(items.Count) : NotFound();
     }
     
     async Task<GitHubUser> GetGitHubUserFromApiAsync(string username)
