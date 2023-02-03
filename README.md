@@ -25,7 +25,7 @@ To get started with this project, follow these steps:
 * Clone the repository to your local machine using the following command:
 
 ```csharp
-https://github.com/Armin-AF/server-side-cache-system.git
+https://github.com/Armin-AF/Server-Side-CacheSystem.git
 ```
 
 * Open the solution in Visual Studio or your preferred .NET development environment.
