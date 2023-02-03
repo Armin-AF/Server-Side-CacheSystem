@@ -107,11 +107,21 @@ To run the tests, use the test explorer in Visual Studio or run the following co
 dotnet test
 ```
 
+## Front End
+
+This project also includes a front end, built with React, that utilizes the back end API to display information about a GitHub user. The user can enter a GitHub username and receive information such as the user's name, bio, location, number of public repositories, and profile URL. The front end also displays the time taken to fetch the data and whether or not the data was retrieved from cache.
+
+The React code uses functional components and hooks, including useState and useEffect, to manage the local state and fetch data from the API. Axios is used for making the API calls. The UI is styled using a .css file.
+
+The front end allows users to easily access and display information about GitHub users in a visually appealing way. It demonstrates the use of React, hooks, and API communication in a web application.
+
 ## Built With
 
 - .NET Core - The .NET Core platform
 - HttpClient - The HTTP client used to communicate with the API
 - Newtonsoft.Json - The JSON library used to serialize and deserialize API responses
+- React - A JavaScript library for building user interfaces
+- TypeScript - A statically typed superset of JavaScript that adds features to the language
 
 ## License
 
