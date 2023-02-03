@@ -42,13 +42,6 @@ cd github-api-client
 dotnet build
 ```
 
-#### Installing from NuGet
-
-You can install the library as a NuGet package by running the following command in the Package Manager Console:
-
-```csharp
-Install-Package GitHubApiClient
-```
 
 ## Usage
 
