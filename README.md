@@ -116,6 +116,12 @@ The front end allows users to easily access and display information about GitHub
 - React - A JavaScript library for building user interfaces
 - TypeScript - A statically typed superset of JavaScript that adds features to the language
 
+## Contribution
+
+Contributions to this project are welcome. If you have any ideas, suggestions, or bug fixes, feel free to open a GitHub issue or submit a pull request. Your contributions will help improve the caching system and overall functionality of the project.
+
+Thank you for your interest in the GitHub User API Client with Caching project. By leveraging caching technology, we aim to optimize the retrieval of user data from the GitHub API, providing faster response times and an improved user experience.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
